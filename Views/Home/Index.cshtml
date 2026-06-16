@@ -1,0 +1,39 @@
+﻿@model List<GSUClass>
+@{
+    ViewData["Title"] = "Class Registration";
+}
+
+<h1>Class Registration</h1>
+
+<a asp-controller="Class" asp-action="Add" class="btn btn-primary mb-3">Add A New Class</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Class Name</th>
+            <th>Class Number</th>
+            <th>Department</th>
+            <th>Credits</th>
+            <th>Capacity</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var gsuClass in Model)
+        {
+            <tr>
+                <td>@gsuClass.Name</td>
+                <td>@gsuClass.Number</td>
+                <td>@gsuClass.Department</td>
+                <td>@gsuClass.Credit</td>
+                <td>@gsuClass.Capacity</td>
+                <td>
+                    <a asp-controller="Class" asp-action="Edit"
+                       asp-route-id="@gsuClass.CourseId" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-controller="Class" asp-action="Delete"
+                       asp-route-id="@gsuClass.CourseId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
